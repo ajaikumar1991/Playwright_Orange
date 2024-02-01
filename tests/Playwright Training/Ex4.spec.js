@@ -9,20 +9,20 @@ test('Alerts', async ({ page }) => {
 
         //check the type of alert- type of dialog
         expect(dialog.type()).toContain('alert');
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(3000);
 
 
         //check the alert message
         expect(dialog.message()).toContain('I am a JS Alert');
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(3000);
 
         await dialog.accept(); // will close the dialog box
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(3000);
     });
 
     //After this we have to click on dialog-before this we have to trigger the event by dialog handle
     await page.click("//button[normalize-space()='Click for JS Alert']")
-    await page.waitForTimeout(3000)
+    await page.waitForTimeout(3000);
 
     // Verify Message displayed after clicking on ok button
     await expect(page.locator("//p[@id='result']")).toHaveText('You successfully clicked an alert')
@@ -38,19 +38,19 @@ test('Alerts Click OK', async ({ page }) => {
 
         //check the type of alert- type of dialog
         expect(dialog.type()).toContain('confirm');
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(3000);
 
 
         //check the alert message
         expect(dialog.message()).toContain('I am a JS Confirm');
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(3000);
 
         await dialog.accept(); // will close the dialog box
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(3000);
     });
 
     await page.click("//button[normalize-space()='Click for JS Confirm']")
-    await page.waitForTimeout(3000)
+    await page.waitForTimeout(3000);
 
     // Verify Message displayed after clicking on ok button
     await expect(page.locator("//p[@id='result']")).toHaveText('You clicked: Ok')
@@ -69,18 +69,18 @@ test('Alerts Click Cancel', async ({ page }) => {
 
         //check the type of alert- type of dialog
         expect(dialog.type()).toContain('confirm');
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(3000);
 
 
         //check the alert message
         expect(dialog.message()).toContain('I am a JS Confirm');
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(3000);
         await dialog.dismiss(); // will close the dialog box
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(3000);
     });
 
     await page.click("//button[normalize-space()='Click for JS Confirm']")
-    await page.waitForTimeout(3000)
+    await page.waitForTimeout(3000);
 
     
     await expect(page.locator("//p[@id='result']")).toHaveText('You clicked: Cancel')
