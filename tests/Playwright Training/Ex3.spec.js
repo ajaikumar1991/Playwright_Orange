@@ -55,7 +55,7 @@ test('Select All Check Box', async ({ page }) => {
     for (let index = 0; index < checkboxes.length; index++) {
         await checkboxes[index].check()
     }
-  // await page.screenshot({ path: 'checkboxes_checked123.png' });
+    await page.screenshot({ path: 'checkboxes_checked123.png' });
     await page.close();
 });
 
