@@ -80,49 +80,35 @@ test('Select Multiple Drop Down', async ({ page }) => {
 });
 
 test('Bootstrap Drop Down', async ({ page }) => {
-
+ 
     await page.goto("https://www.dummyticket.com/dummy-ticket-for-visa-application/");
-
+ 
     // await page.locator('#billing_country').click()
-
-    await page.waitForTimeout(10000);
-
-    const options = await page.locator('//*[@id="billing_country"]/option')
-    await expect(options).toHaveCount(250)
-
-    const optionsNew = await page.$$('//*[@id="billing_country"]/option')
-    await expect(optionsNew.length).toBe(250)
-
+ 
+    // await page.waitForTimeout(5000);
+ 
+ 
+    await page.locator("#select2-billing_country-container").click()
     //Selecting multiple options from drop down
-    //await page.waitForSelector('//*[@id="billing_country"]/option');
-    const dropdownOptions = await page.$$('//*[@id="billing_country"]/option')
+    await page.waitForSelector("//ul[@id='select2-billing_country-results']//li")
+    const dropdownOptions = await page.$$("//ul[@id='select2-billing_country-results']//li")
     console.log(dropdownOptions.length)
-
-
+ 
+ 
     for (const option of dropdownOptions) {
         let status = false
         const value = await option.textContent()
         console.log("value is", value)
-    
+   
         // @ts-ignore
         if (value.includes('India')) {
             status = true
-            
-    
+           
+   
             break
         }
     }
-
-    // //Deselect the options from the driop downs
-    // for (const option of dropdownOptions) {
-
-    //     const value = await option.textContent()
-    //     console.log("value is", value)
-    //     if (value?.includes('HTML') || value?.includes('CSS')) {
-    //         await option.click()
-    //     }
-    // }
-    //await page.screenshot({ path: 'file1.png' });
+ 
     await page.close();
 });
 
