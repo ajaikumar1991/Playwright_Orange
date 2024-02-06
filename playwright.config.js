@@ -7,25 +7,11 @@ const { defineConfig, devices } = require('@playwright/test');
  */
 // require('dotenv').config();
 
-//console.log(`Environment: ${process.env.ENV}`)
-if (!process.env.ENV) {
-  require("dotenv").config({
-    override: true,
-    path: `${__dirname}//tests//.env.credentials` });
-} else {
-  require("dotenv").config({
-    override: true, // use if needed
-    path: `${__dirname}//tests//.env.${process.env.ENV}`,
-  });
-}
-
-
-
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './tests',
+  testDir: './e2e',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -52,7 +38,7 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    /*{
+    {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
@@ -60,7 +46,7 @@ module.exports = defineConfig({
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-    },*/
+    },
 
     /* Test against mobile viewports. */
     // {
