@@ -85,6 +85,8 @@ test('Bootstrap Drop Down', async ({ page }) => {
 
     // await page.locator('#billing_country').click()
 
+    await page.waitForTimeout(10000);
+
     const options = await page.locator('//*[@id="billing_country"]/option')
     await expect(options).toHaveCount(250)
 
@@ -92,6 +94,7 @@ test('Bootstrap Drop Down', async ({ page }) => {
     await expect(optionsNew.length).toBe(250)
 
     //Selecting multiple options from drop down
+    //await page.waitForSelector('//*[@id="billing_country"]/option');
     const dropdownOptions = await page.$$('//*[@id="billing_country"]/option')
     console.log(dropdownOptions.length)
 
