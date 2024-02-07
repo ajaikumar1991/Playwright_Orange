@@ -16,6 +16,6 @@ test('Multiple file upload', async ({ page }) => {
     await page.goto('https://davidwalsh.name/demo/multiple-file-upload.php');
     const filesToUpload = ['upload1.png', 'upload2.png'];
     await page.locator('#filesToUpload').setInputFiles(filesToUpload).then(async () => {
-        await expect(page.locator('#fileList li')).toHaveCount(2);
+    await expect(page.locator('#fileList li')).toHaveCount(2);
     });
 });
