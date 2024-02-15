@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+test('Keyboard_Actions', async ({ page }) => {
   await page.goto('https://demoqa.com/text-box');
   await page.waitForLoadState('domcontentloaded');
   await expect(page.getByPlaceholder('Full Name')).toBeVisible();
